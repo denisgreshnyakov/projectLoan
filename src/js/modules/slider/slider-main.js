@@ -46,9 +46,17 @@ export default class MainSlider extends Slider {
       });
 
       item.parentNode.previousElementSibling.addEventListener("click", (e) => {
-        e.preventDefault();
-        this.slideIndex = 1;
-        this.showSlides(this.slideIndex);
+        if (
+          e.target.className == "download" ||
+          e.target.className == "download__text" ||
+          e.target.tagName == "path"
+        ) {
+          return;
+        } else {
+          e.preventDefault();
+          this.slideIndex = 1;
+          this.showSlides(this.slideIndex);
+        }
       });
     });
 
